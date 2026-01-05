@@ -57,7 +57,7 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose })
                     </h3>
                     <div className="mt-3">
                       <p className="text-base text-brand-graySec leading-relaxed">
-                        Hablemos sobre tu negocio. En esta llamada gratuita analizaremos tu situación actual y te diré si mis servicios de planificación fiscal y CFO Fractional es para vos.
+                        Hablemos sobre tu negocio. En esta llamada gratuita analizaremos tu situación actual y te diré si mis servicios de planificación fiscal y CFO Fractional son para vos.
                       </p>
                       
                       <motion.div 
