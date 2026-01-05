@@ -926,9 +926,19 @@ const App: React.FC = () => {
   const [loginError, setLoginError] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [currentPostId, setCurrentPostId] = useState<string | undefined>(undefined);
   
   const adminPosts = useAdminPosts();
-  const currentPost = useAdminPost((route as any).id);
+  const currentPost = useAdminPost(currentPostId);
+
+  // Actualizar currentPostId cuando cambie el route
+  useEffect(() => {
+    if (route.path === 'admin-post-edit') {
+      setCurrentPostId((route as any).id);
+    } else {
+      setCurrentPostId(undefined);
+    }
+  }, [route]);
 
   // Check authentication on mount
   useEffect(() => {
