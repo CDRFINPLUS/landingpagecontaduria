@@ -62,6 +62,24 @@ export const AdminPostEditor: React.FC<AdminPostEditorProps> = ({
   const [tagInput, setTagInput] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
+  // Update form when initialData changes (for editing existing posts)
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        title: initialData?.title || '',
+        slug: initialData?.slug || '',
+        excerpt: initialData?.excerpt || '',
+        contentMarkdown: initialData?.contentMarkdown || '',
+        coverImageUrl: initialData?.coverImageUrl || '',
+        category: initialData?.category || '',
+        tags: initialData?.tags || [],
+        seoTitle: initialData?.seoTitle || '',
+        seoDescription: initialData?.seoDescription || '',
+        readingTimeMin: initialData?.readingTimeMin || 0,
+      });
+    }
+  }, [initialData]);
+
   // Auto-generate slug from title
   useEffect(() => {
     if (!initialData?.slug && formData.title) {

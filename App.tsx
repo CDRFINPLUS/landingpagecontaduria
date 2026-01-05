@@ -938,7 +938,7 @@ const App: React.FC = () => {
     } else {
       setCurrentPostId(undefined);
     }
-  }, [route]);
+  }, [route.path, (route as any).id]);
 
   // Check authentication on mount
   useEffect(() => {
