@@ -28,20 +28,14 @@ DROP POLICY IF EXISTS "Authenticated admins can upload" ON storage.objects;
 CREATE POLICY "Authenticated admins can upload"
 ON storage.objects FOR INSERT
 TO authenticated
-WITH CHECK (
-  bucket_id = 'blog-images' AND
-  auth.uid() IN (SELECT id FROM public.admins)
-);
+WITH CHECK (bucket_id = 'blog-images');
 
 -- 4. Permitir delete solo a admins autenticados
 DROP POLICY IF EXISTS "Authenticated admins can delete" ON storage.objects;
 CREATE POLICY "Authenticated admins can delete"
 ON storage.objects FOR DELETE
 TO authenticated
-USING (
-  bucket_id = 'blog-images' AND
-  auth.uid() IN (SELECT id FROM public.admins)
-);
+USING (bucket_id = 'blog-images');
 
 -- 5. Verificar configuración
 SELECT 
